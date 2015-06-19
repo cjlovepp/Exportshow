@@ -21,47 +21,21 @@ import com.cj.base.utils.SvgPngConverter;
 import com.cj.base.utils.UUIDUtils;
 
 @Controller
-@RequestMapping("front")
-public class showHighChartsController {
+@RequestMapping("icharts")
+public class showIChartsController {
 
-	@RequestMapping("toHighChatrs")
-	public String toHighChatrs(){
-		return "highcharts";
+	@RequestMapping("toIChatrs")
+	public String toIChatrs(){
+		return "iCharts";
 	}
 	
 	@ResponseBody
-	@RequestMapping("getData")
-	public List<List<Object>> getData(int num){
-		List<List<Object>> datas = new ArrayList<List<Object>>();
-		for (int i = 0; i < num; i++) {
-			List<Object> temp = new ArrayList<Object>();
-			temp.add("测试数据" + i);
-			temp.add(i);
-			datas.add(temp);
-		}
-		
-		return datas;
-	}
-	
-	@ResponseBody
-	@RequestMapping("saveSvg")
-	public Boolean saveSvg (HttpServletRequest request , String svg){
-		try {
-			HttpSession session = request.getSession();
-			session.setAttribute("svgHighchatts", svg);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	@ResponseBody
-	@RequestMapping("exportHighCharts")
-	public String exportHighCharts(HttpServletResponse response,HttpServletRequest request, int num) throws IOException{
+	@RequestMapping("exportICharts")
+	public String exportICharts(HttpServletResponse response,HttpServletRequest request, String images) throws IOException{
 		response.setContentType("application/x-msdownload");
 		//response.setContentType("application/octet-stream");
 		response.setHeader("Content-Disposition", "attachment; filename=exportDatas.xlsx");
+		System.out.println(images);
 		InputStream image = null;
 		String uuid = UUIDUtils.getUUID() + ".jpg" ;
 		String tempPath = request.getServletContext().getRealPath("/temp") ;
@@ -71,7 +45,7 @@ public class showHighChartsController {
 			SvgPngConverter.convertToJpeg(svgHighchatts, tempPath + File.separator + uuid) ;
 			image = new FileInputStream(new File(tempPath + File.separator + uuid));
 			List<List<Object>> datas = new ArrayList<List<Object>>();
-			for (int i = 0; i < num; i++) {
+			for (int i = 0; i < 9; i++) {
 				List<Object> temp = new ArrayList<Object>();
 				temp.add("测试数据" + i);
 				temp.add(i);
@@ -89,7 +63,5 @@ public class showHighChartsController {
 		return null;
 		
 	}
-	
-	
 	
 }
