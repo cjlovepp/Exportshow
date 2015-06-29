@@ -19,6 +19,7 @@
 	<div id="content">
 		<div class="statistics fl" id="canvasDiv">
 	</div>
+	<img id="imageCanvas" src=""/>
 </div>
 </body>
 <script type="text/javascript">
@@ -102,11 +103,15 @@ $(function(){
 
 
 function exportDate(){
-	var image = new Image();
-	image = $("canvas").toDataURL("image/png");
+	//var image = new Image();
+	var canvas = $("canvas");
+	var imageURL = canvas.toDataURL("image/png");
+	var image = $("#imageCanvas");
+	image.src = imageURL;
+	
 	var url_ichart = "saveSvg.do";
 	
-	$.ajax({
+	/* $.ajax({
         url: url_svg,
         type: 'post',
         data: param,
@@ -118,7 +123,7 @@ function exportDate(){
         {
         	window.location.href = url_export;
         }
-    });
+    }); */
 	
 }
 
