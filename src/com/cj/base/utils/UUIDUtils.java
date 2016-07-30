@@ -7,6 +7,7 @@ public class UUIDUtils {
 	/**
 	 * 获取到32位的UUID
 	 * author cj
+	 * test update
 	 * @return
 	 */
 	public static String getUUID() {
