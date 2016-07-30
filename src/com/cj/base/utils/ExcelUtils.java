@@ -27,7 +27,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * ClassName:ResourcesExcelUtils
  * Function: 定制化课程Excel导出数据
  *
- * @author   cj
+ * @author   cj**
  *
  */
 public class ExcelUtils {
@@ -41,7 +41,7 @@ public class ExcelUtils {
 	}
 	
 	/*
-	 * 字体基本样式
+	 * 字体基本样式_
 	 */
 	private static XSSFCellStyle getContentStyle(XSSFWorkbook wb) {
 
